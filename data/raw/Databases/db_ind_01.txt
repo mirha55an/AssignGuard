@@ -1,0 +1,13 @@
+# Distributed Databases in Modern Information Systems
+
+Distributed databases are database systems in which data is stored across multiple physical locations connected through a network. Unlike centralized databases, distributed databases divide data among different servers while allowing users to access the system as if it were a single database. This architecture improves scalability, fault tolerance, and availability in modern enterprise and cloud-based environments.
+
+Distributed database systems use techniques such as replication and fragmentation to manage data across multiple nodes. Replication creates copies of data on different servers to improve reliability and availability. Fragmentation divides a database into smaller segments that can be stored at different locations. Horizontal fragmentation distributes rows across servers, while vertical fragmentation distributes columns. These methods improve performance and reduce network traffic during query processing.
+
+Concurrency control and distributed transaction management are critical components of distributed databases. Multiple users may access and modify data simultaneously, requiring synchronization mechanisms to maintain consistency. Protocols such as Two-Phase Commit (2PC) are used to ensure that distributed transactions either complete successfully on all nodes or are entirely rolled back. This helps maintain data integrity across the distributed system.
+
+Distributed databases are widely used in cloud computing, banking systems, social media platforms, and large-scale e-commerce applications. Companies handling massive amounts of user data rely on distributed architectures to support high availability and load balancing. NoSQL databases such as MongoDB and Cassandra are commonly implemented in distributed environments because of their scalability and flexible data models.
+
+Despite their benefits, distributed databases also introduce several challenges. Network latency, synchronization complexity, and distributed system failures can affect performance and reliability. Maintaining consistency across geographically distributed nodes is also difficult, especially in real-time applications. Security concerns such as unauthorized access and data interception must also be addressed through encryption and secure communication protocols.
+
+In conclusion, distributed databases have become essential technologies in modern information systems due to their scalability, reliability, and high availability. Their ability to manage large-scale data across multiple locations makes them highly valuable for cloud computing and enterprise-level applications.
