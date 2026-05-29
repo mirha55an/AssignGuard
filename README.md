@@ -1,6 +1,8 @@
 # AssignGuard
 
-AssignGuard is an academic assignment similarity detection tool. It accepts multiple `.txt` submissions, preprocesses the text, computes TF-IDF cosine similarity, ranks suspicious document pairs, and visualizes the results.
+AssignGuard is an academic assignment similarity detection tool. It accepts multiple `.txt` submissions, preprocesses the text, computes TF-IDF cosine similarity, ranks suspicious document pairs, and visualizes the results with a dark-mode dashboard.
+
+**Live Demo:** [https://assignguard-7p7u.onrender.com/](https://assignguard-7p7u.onrender.com/)
 
 ## Tech Stack
 
