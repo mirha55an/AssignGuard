@@ -1,6 +1,6 @@
 # AssignGuard
 
-AssignGuard is an academic assignment similarity detection tool. It accepts multiple `.txt` submissions, preprocesses the text, computes TF-IDF cosine similarity, ranks suspicious document pairs, and visualizes the results with a dark-mode dashboard.
+AssignGuard is an academic assignment similarity detection tool. It accepts multiple `.txt` submissions, preprocesses the text, computes TF-IDF cosine similarity, ranks suspicious document pairs, and visualizes the results.
 
 ## Tech Stack
 
@@ -15,8 +15,6 @@ AssignGuard is an academic assignment similarity detection tool. It accepts mult
   - DM Mono
   - Instrument Serif
 
-The frontend does not use React, Vue, Tailwind, Bootstrap, or a component framework. It is a static frontend served from `app/frontend`.
-
 ### Backend
 
 - Python
@@ -28,7 +26,7 @@ The frontend does not use React, Vue, Tailwind, Bootstrap, or a component framew
 
 ## Project Structure
 
-```text
+````text
 AssignGuard/
   app/
     server.py              # Starlette backend and API routes
@@ -47,8 +45,6 @@ AssignGuard/
     visualization.py       # Pair ranking and legacy plotting helpers
     evaluation.py          # Model evaluation helpers
     utils.py               # Shared utility functions
-  test.py                  # Local experiment script
-```
 
 ## How To Run
 
@@ -56,7 +52,7 @@ From the project root:
 
 ```powershell
 cd F:\AssignGuard
-```
+````
 
 If you already have the included virtual environment, run:
 
