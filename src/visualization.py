@@ -45,7 +45,7 @@ def rank_suspicious_pairs(similarity_matrix, doc_names, threshold=0.70):
 
 
 
-def plot_clusters(reduced_vectors,cluster_labels,doc_names):
+def plot_clusters(reduced_vectors,cluster_labels,doc_names, save_path=None):
 
     fig, ax = plt.subplots(figsize=(10, 8))
 
@@ -67,5 +67,12 @@ def plot_clusters(reduced_vectors,cluster_labels,doc_names):
         )
 
     ax.set_title("DBSCAN Clusters")
+    
+    if save_path:
+        fig.savefig(
+            save_path,
+            dpi=300,
+            bbox_inches="tight"
+        )
 
     return fig
