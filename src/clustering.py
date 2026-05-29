@@ -35,11 +35,12 @@ def plot_pca(reduced_vectors, doc_names):
     
 def perform_dbscan(tfidf_matrix, eps=0.6, min_samples=2):
     dbscan = DBSCAN(eps=eps, min_samples=min_samples)
-    clusters = dbscan.fit_predict(tfidf_matrix.toarray())
+    dense_vectors = tfidf_matrix.toarray()
+    clusters = dbscan.fit_predict(dense_vectors)
     unique_labels = set(clusters)
-    if len(unique_labels) > 1:
+    if 1 < len(unique_labels) < len(clusters):
         score = silhouette_score(
-        tfidf_matrix.toarray(),
+        dense_vectors,
         clusters
         )
         print(f"Silhouette Score: {score:.3f}")

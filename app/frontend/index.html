@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AssignGuard Similarity Report</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <h2 class="sr-only">AssignGuard similarity report dashboard</h2>
+
+    <div class="shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">
+            <span class="brand-name">AssignGuard</span>
+          </div>
+          <div class="brand-sub">SIMILARITY REPORT</div>
+        </div>
+
+        <form id="analysis-form" class="analysis-form">
+          <div class="sidebar-section">
+            <div class="sidebar-label">File Queue</div>
+            <label class="file-item upload-trigger" for="file-input">
+              <input id="file-input" name="files" type="file" accept=".txt" multiple />
+              <span class="file-dot upload"></span>
+              Select .txt files
+            </label>
+            <div id="file-list" class="file-list" aria-live="polite"></div>
+          </div>
+
+          <div class="controls">
+            <label class="ctrl-row">
+              <div class="ctrl-head">
+                <span class="ctrl-name">Similarity threshold</span>
+                <output id="threshold-value" class="ctrl-val">0.70</output>
+              </div>
+              <input id="threshold" name="threshold" class="range-input" type="range" min="0" max="1" step="0.05" value="0.70" />
+            </label>
+
+            <label class="ctrl-row">
+              <div class="ctrl-head">
+                <span class="ctrl-name">DBSCAN epsilon</span>
+                <output id="eps-value" class="ctrl-val">0.60</output>
+              </div>
+              <input id="eps" name="eps" class="range-input" type="range" min="0.1" max="2" step="0.1" value="0.6" />
+            </label>
+
+            <label class="ctrl-row">
+              <div class="ctrl-head">
+                <span class="ctrl-name">Min samples</span>
+                <output id="min-samples-value" class="ctrl-val">3</output>
+              </div>
+              <input id="min-samples" name="min_samples" class="range-input" type="range" min="2" max="10" step="1" value="3" />
+            </label>
+
+            <button class="run-btn" type="submit">Run Analysis</button>
+          </div>
+        </form>
+      </aside>
+
+      <main class="main">
+        <div class="topbar">
+          <div class="stat-cell">
+            <div class="stat-label">Documents</div>
+            <div id="doc-count" class="stat-num">0</div>
+            <div class="stat-sub">TXT submissions</div>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-label">Flagged Pairs</div>
+            <div id="pair-count" class="stat-num red">0</div>
+            <div id="threshold-sub" class="stat-sub">above threshold 0.70</div>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-label">Highest Score</div>
+            <div id="top-score" class="stat-num">-</div>
+            <div id="top-score-sub" class="stat-sub">awaiting analysis</div>
+          </div>
+        </div>
+
+        <div class="header-row">
+          <h1 class="page-title">Similarity Report</h1>
+          <div id="status-badge" class="badge-complete idle">
+            <div class="badge-dot"></div>
+            <span id="status-text">Waiting for files</span>
+          </div>
+        </div>
+
+        <div class="content">
+          <div class="panel">
+            <div class="panel-head">
+              <span class="panel-title">Suspicious Pairs</span>
+              <span id="pair-note" class="flag-count">0 flagged</span>
+            </div>
+            <table class="pairs-table">
+              <thead>
+                <tr>
+                  <th>Document 1</th>
+                  <th>Document 2</th>
+                  <th>Score</th>
+                </tr>
+              </thead>
+              <tbody id="pairs-body">
+                <tr>
+                  <td colspan="3" class="empty-state">No analysis yet</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head">
+              <span class="panel-title">Similarity Heatmap</span>
+              <span class="panel-meta">TF-IDF cosine</span>
+            </div>
+            <div class="heatmap-wrap">
+              <svg id="heatmap" width="100%" viewBox="0 0 380 280"></svg>
+            </div>
+          </div>
+
+          <div class="panel pca-panel">
+            <div class="panel-head">
+              <span class="panel-title">PCA Projection</span>
+              <span class="panel-meta">2D document positions - TF-IDF vectors</span>
+            </div>
+            <div class="pca-wrap">
+              <svg id="pca" width="100%" viewBox="0 0 680 200"></svg>
+            </div>
+          </div>
+
+          <div class="panel cluster-panel">
+            <div class="panel-head">
+              <span class="panel-title">DBSCAN Clusters</span>
+              <span id="cluster-note" class="panel-meta">0 clusters found</span>
+            </div>
+            <table class="cluster-table">
+              <thead>
+                <tr>
+                  <th>Document</th>
+                  <th>Cluster</th>
+                </tr>
+              </thead>
+              <tbody id="clusters-body">
+                <tr>
+                  <td colspan="2" class="empty-state">No analysis yet</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>

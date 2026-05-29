@@ -4,7 +4,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 def tfidf_similarity(documents):
     # Creating the vectorizer
-    vectorizer = TfidfVectorizer()
+    vectorizer = TfidfVectorizer(ngram_range=(1,2))
 
     # Converting the documents into a TF-IDF matrix
     tfidf_matrix = vectorizer.fit_transform(documents)
