@@ -11,7 +11,7 @@ def reduce_dimensions(tfidf_matrix):
     
     return reduced_vectors
 
-def plot_pca(reduced_vectors, doc_names):
+def plot_pca(reduced_vectors, doc_names, save_path=None):
     fig, ax = plt.subplots(figsize=(10, 8))
 
     x = reduced_vectors[:, 0]
@@ -30,6 +30,13 @@ def plot_pca(reduced_vectors, doc_names):
     ax.set_title("PCA of TF-IDF Vectors")
     ax.set_xlabel("Principal Component 1")
     ax.set_ylabel("Principal Component 2")
+    
+    if save_path:
+        fig.savefig(
+            save_path,
+            dpi=300,
+            bbox_inches="tight"
+        )
 
     return fig
     

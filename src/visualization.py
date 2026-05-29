@@ -2,7 +2,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import pandas as pd
 
-def visualize(similarity_matrix, doc_names, title = "Similarity Heatmap"):
+def visualize(similarity_matrix, doc_names, title = "Similarity Heatmap", save_path=None):
     fig, ax = plt.subplots(figsize=(10, 8))
     sns.heatmap(similarity_matrix, xticklabels=doc_names, yticklabels=doc_names, cmap='coolwarm', annot=True, ax=ax)
     plt.title(title)
@@ -10,6 +10,14 @@ def visualize(similarity_matrix, doc_names, title = "Similarity Heatmap"):
     plt.yticks(rotation=0)
     plt.tight_layout()
     plt.show()
+    
+    if save_path:
+        fig.savefig(
+            save_path,
+            dpi=300,
+            bbox_inches="tight"
+        )
+
     return fig
     
 def rank_suspicious_pairs(similarity_matrix, doc_names, threshold=0.70):

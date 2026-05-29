@@ -1,4 +1,6 @@
 import string
+import nltk
+nltk.download('stopwords', quiet=True)
 from nltk.corpus import stopwords
 import spacy
 
