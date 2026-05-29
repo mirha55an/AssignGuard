@@ -12,7 +12,7 @@ def tfidf_similarity(documents):
     # Computing the cosine similarity matrix
     similarity_matrix = cosine_similarity(tfidf_matrix)
 
-    return similarity_matrix
+    return similarity_matrix, tfidf_matrix
 
 def jaccard_similarity(documents):
     num_docs = len(documents)

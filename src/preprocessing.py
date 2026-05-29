@@ -33,11 +33,14 @@ def lemmatize_tokens(tokens):
 def rejoin_tokens(tokens):
     return ' '.join(tokens)
 
-def preprocess_document(file_path):
-    text = load_document(file_path)
+def preprocess_text(text):
     cleaned_text = clean_text(text)
     tokens = tokenize(cleaned_text)
     tokens_no_stopwords = remove_stopwords(tokens)
     lemmatized_tokens = lemmatize_tokens(tokens_no_stopwords)
     final_text = rejoin_tokens(lemmatized_tokens)
     return final_text
+
+def preprocess_document(file_path):
+    text = load_document(file_path)
+    return preprocess_text(text)
